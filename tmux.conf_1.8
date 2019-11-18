@@ -1,0 +1,41 @@
+# Set that stupid Esc-Wait off, so VI works again
+set -sg escape-time 0
+
+# Enable the mouse
+setw -g mode-mouse on
+set -g mouse-select-window on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-utf on
+
+# Lengthen the history
+set -g history-limit 50000
+
+set-option -s set-clipboard off
+
+# Use vi keybindings for navigation
+set-window-option -g mode-keys vi
+
+# Set up better copy and paste; first, the keybindings
+bind P paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'r' rectangle-toggle
+
+# Move tmux buffer into system buffer (aka system clipboard)
+bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+
+# Better navigation
+bind b last-window
+
+# Meta = Alt
+bind -n C-M-h previous-window
+bind -n C-M-l next-window
+bind -n C-M-Left previous-window
+bind -n C-M-Right next-window
+
+# Move around faster
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R
