@@ -11,6 +11,8 @@ set -g mouse-utf on
 # Lengthen the history
 set -g history-limit 50000
 
+# Don't output garbage to the screen when copying
+# Source: https://askubuntu.com/questions/507214/why-does-tmux-byobu-fill-my-screen-with-garbage-characters-when-i-copy-a-selecti
 set-option -s set-clipboard off
 
 # Use vi keybindings for navigation
