@@ -1,14 +1,20 @@
+set -sg escape-time 0
+
 set -g mouse on
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 set-option -g default-shell /usr/bin/zsh
 
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
-bind-key -T copy-mode-vi 'r' send-keys -X rectangle-toggle
 bind-key -T copy-mode-vi 'y' send -X copy-pipe 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi 'r' send-keys -X rectangle-toggle
 
+# Reload configuration
 unbind r
 bind r source-file ~/.tmux.conf
 
 unbind ^A
 bind ^A select-pane -t :.*
+
+# Don't output garbage to the screen when copying
+set-option -s set-clipboard off
