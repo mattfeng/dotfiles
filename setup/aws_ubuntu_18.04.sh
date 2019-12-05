@@ -26,6 +26,9 @@ cp ~/dotfiles/git/id_rsa.pub.gpg ~/.ssh/
 gpg --output ~/.ssh/id_rsa --decrypt ~/.ssh/id_rsa.gpg
 gpg --output ~/.ssh/id_rsa.pub --decrypt ~/.ssh/id_rsa.pub.gpg
 
+echo 'Setting up git config'
+cp ~/dotfiles/git/gitconfig ~/.gitconfig
+
 echo 'Installing Conda'
 
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh
