@@ -1,0 +1,27 @@
+Host perf
+  RemoteForward 52698 localhost:52698
+  HostName mattfeng.perf.engineering
+  User mattfeng
+  ForwardX11Trusted yes
+
+Host compute
+  RemoteForward 52698 localhost:52698
+  HostName 10.102.227.241
+  User mattfeng
+  ForwardX11Trusted yes
+
+Host cogsci
+  IdentityFile ~/fa19/keys/kaggle.pem
+  LocalForward 8888 localhost:8888
+  HostName 34.194.14.249
+  User ubuntu
+
+Host github.com-mf
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_mattfeng
+
+Host github.com-hm
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_hackmed
