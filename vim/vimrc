@@ -9,6 +9,9 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'minibufexpl.vim'
+Plugin 'ervandew/supertab'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -49,7 +52,11 @@ let g:ycm_filetype_blacklist = {
 let g:jedi#max_doc_height = 18
 let g:jedi#show_call_signatures = '2'
 let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = "<Tab>"
 
 nnoremap gb :ls<CR>:b<Space>
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+nmap <C-h> <ESC>:bprev<CR>
+nmap <C-l> <ESC>:bnext<CR>
+
+colorscheme zellner
