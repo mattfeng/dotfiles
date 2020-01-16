@@ -4,13 +4,13 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'minibufexpl.vim'
 Plugin 'ervandew/supertab'
+Plugin 'lifepillar/vim-solarized8'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -38,27 +38,26 @@ nmap j gj
 
 set noswapfile
 
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar': 1,
-      \ 'notes': 1,
-      \ 'markdown': 1,
-      \ 'netrw': 1,
-      \ 'unite': 1,
-      \ 'text': 1,
-      \ 'vimwiki': 1,
-      \ 'pandoc': 1,
-      \ 'infolog': 1,
-      \ 'mail': 1
-      \}
-
 let g:jedi#max_doc_height = 18
-let g:jedi#show_call_signatures = '2'
+let g:jedi#show_call_signatures = 2
 let g:jedi#popup_on_dot = 0
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#auto_close_doc = 0
 
 nnoremap gb :ls<CR>:b<Space>
 nnoremap <C-n> :NERDTreeToggle<CR>
+let g:SuperTabDefaultCompletionType = "context"
 
-nmap <C-h> <ESC>:bprev<CR>
-nmap <C-l> <ESC>:bnext<CR>
+nmap <C-h> gT
+nmap <C-l> gt
 
-colorscheme zellner
+set background=dark
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+colorscheme solarized8
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
