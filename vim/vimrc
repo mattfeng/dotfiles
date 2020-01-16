@@ -22,6 +22,8 @@ set expandtab
 set smartindent   " Do smart autoindenting when starting a new line
 set shiftwidth=4
 
+set statusline+=%F
+set laststatus=2
 set number
 set showcmd
 set cursorline
