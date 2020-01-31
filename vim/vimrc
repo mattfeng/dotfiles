@@ -10,10 +10,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'ervandew/supertab'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'fxn/vim-monochrome'
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'google/vim-colorscheme-primary'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -58,8 +54,8 @@ nmap <C-l> gt
 
 syntax enable
 set t_Co=256
-set background=light
-colorscheme github
+set background=dark
+colorscheme darkness
 
 "set background=dark
 "if exists('+termguicolors')
