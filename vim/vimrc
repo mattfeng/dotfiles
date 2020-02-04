@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let mapleader = ","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,6 +12,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'ervandew/supertab'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'xavierd/clang_complete'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,7 +49,7 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#auto_close_doc = 0
 
-nnoremap gb :ls<CR>:b<Space>
+nnoremap <C-x> :BuffergatorToggle<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 let g:SuperTabDefaultCompletionType = "context"
 
@@ -53,17 +57,30 @@ nmap <C-h> gT
 nmap <C-l> gt
 
 syntax enable
-set t_Co=256
 set background=dark
-colorscheme darkness
+colorscheme spacegray
+set termguicolors
 
 "set background=dark
 "if exists('+termguicolors')
 "  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"  set termguicolors
 "endif
 "colorscheme solarized8
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" buffergator settings
+let g:buffergator_autoupdate = 1
+let g:buffergator_viewport_split_policy = "R"
+
+" open NERDTree by default
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeQuitOnOpen = 0
+
+let g:clang_library_path='/usr/lib/llvm-9/lib/libclang.so.1'
