@@ -8,12 +8,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'ervandew/supertab'
+" General Productivity
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Python
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+
+" C and C++ stuff
 Plugin 'xavierd/clang_complete'
+
+" JavaScript and React
+Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -84,3 +95,5 @@ let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeQuitOnOpen = 0
 
 let g:clang_library_path='/usr/lib/llvm-9/lib/libclang.so.1'
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
