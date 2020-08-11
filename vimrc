@@ -26,6 +26,9 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
 
+" Unicode
+Plugin 'joom/latex-unicoder.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -97,3 +100,12 @@ let g:NERDTreeQuitOnOpen = 0
 let g:clang_library_path='/usr/lib/llvm-9/lib/libclang.so.1'
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+set cursorline
+set mouse=a
+
+" set filetype based on extension
+au BufRead,BufNewFile *.mdx setfiletype markdown
+
+au FileType yaml setlocal shiftwidth=2 softtabstop=2 expandtab
+au FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
