@@ -1,5 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
+
+set background=dark 				" dark background
+autocmd vimenter * colorscheme gruvbox 		" set colorscheme
