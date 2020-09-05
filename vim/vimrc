@@ -5,5 +5,28 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
 
-set background=dark 				" dark background
-autocmd vimenter * colorscheme gruvbox 		" set colorscheme
+set background=dark                       " dark background
+autocmd vimenter * colorscheme gruvbox    " set colorscheme
+
+" set up indentation (indent=4 spaces)
+" source: https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" show tab as characters
+" source: https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+set list
+set listchars=tab:!·,trail:·
+
+" set shiftwidth to 2 for yaml files
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType text setlocal shiftwidth=2 tabstop=2
+
+" set line numbers, make them relative as well
+set number
+set relativenumber
+
+" highlight the 80 column, keep lines shorter
+set colorcolumn=80

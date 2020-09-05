@@ -22,9 +22,13 @@ set-option -s set-clipboard off
 # Better navigation
 bind-key b last-window
 
-# Shift left and right to move a round
+# Shift left and right to move around
 bind -n S-Left  previous-window
 bind -n S-Right next-window
+unbind C-M-o
+bind -n C-M-y previous-window
+unbind C-M-o
+bind -n C-M-o next-window
 
 # Move around faster
 bind -n M-h select-pane -L
