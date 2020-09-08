@@ -108,4 +108,5 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " set airline theme
 let g:airline_powerline_fonts = 0
-let g_airline_theme='deus'
+let g:airline_theme='fruit_punch'
+
