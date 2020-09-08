@@ -1,7 +1,43 @@
+" pandoc settings
+let g:pandoc#modules#disabled = ["folding"]
+let g:pandoc#syntax#style#emphases = 0
+let g:pandoc#syntax#codeblocks#embeds#langs = ["python"]
+
+" enable italics gruvbox
+let g:gruvbox_italic = 1
+
+" disable polyglot for these files
+let g:polyglot_disabled = ['']
+
+" disable coc warning about vim version too low
+let g:coc_disable_startup_warning = 1
+
 call plug#begin('~/.vim/plugged')
 
+" colorscheme
 Plug 'morhetz/gruvbox'
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" latex plugins
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'lervag/vimtex', { 'for': 'tex' }
+
+" markdown plugins
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
+" syntax highlighting for many languages
+Plug 'sheerun/vim-polyglot'
+
+" intelligent code completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -9,20 +45,22 @@ set background=dark                       " dark background
 autocmd vimenter * colorscheme gruvbox    " set colorscheme
 
 " set up indentation (indent=4 spaces)
-" source: https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
+" source: https://archive.is/U0WkA
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
 " show tab as characters
-" source: https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+" source: https://archive.is/FBaEM
 set list
 set listchars=tab:!·,trail:·
 
-" set shiftwidth to 2 for yaml files
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-autocmd FileType text setlocal shiftwidth=2 tabstop=2
+" set shiftwidth to 2 for yaml, text, and latex files
+autocmd FileType yaml     setlocal shiftwidth=2 tabstop=2
+autocmd FileType text     setlocal shiftwidth=2 tabstop=2
+autocmd FileType tex      setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 " set line numbers, make them relative as well
 set number
@@ -30,3 +68,44 @@ set relativenumber
 
 " highlight the 80 column, keep lines shorter
 set colorcolumn=80
+
+" disable swap file
+set noswapfile
+
+" enable mouse scrolling
+set mouse=a
+
+" vim-latex-live-preview settings
+let g:livepreview_previewer = 'llpp.inotify'
+let g:livepreview_cursorhold_recompile = 0
+
+" vimtex settings
+let g:tex_flavor = 'latex'
+
+" vim-instant-markdown settings
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autostart = 0
+
+" use global registers for copy and pasting
+" need to install gvim for these to work
+set clipboard=unnamedplus
+" vnoremap y "+y
+" vnoremap x "+x
+" nnoremap x "+x
+" nnoremap p "+p
+
+" set up italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+" keep signcolumn (where linting is shown) constantly shown
+set signcolumn=yes
+
+" tab completion
+" source: https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" set airline theme
+let g:airline_powerline_fonts = 0
+let g_airline_theme='deus'

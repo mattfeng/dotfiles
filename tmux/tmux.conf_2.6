@@ -25,10 +25,6 @@ bind-key b last-window
 # Shift left and right to move around
 bind -n S-Left  previous-window
 bind -n S-Right next-window
-unbind C-M-o
-bind -n C-M-y previous-window
-unbind C-M-o
-bind -n C-M-o next-window
 
 # Move around faster
 bind -n M-h select-pane -L
@@ -55,7 +51,9 @@ set -g status-left ''
 set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
 set -g status-right-length 50
 set -g status-left-length 20
-setw -g mode-keys vi
 
 setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
 setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+
+bind-key -n M-[ previous-window
+bind-key -n M-] next-window
