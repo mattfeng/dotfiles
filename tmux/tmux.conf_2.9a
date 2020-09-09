@@ -1,14 +1,33 @@
 set -g mouse on
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-set-option -g default-shell /usr/bin/zsh
+set-option -g default-shell /usr/local/bin/zsh
 
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
 bind-key -T copy-mode-vi 'r' send-keys -X rectangle-toggle
-bind-key -T copy-mode-vi 'y' send -X copy-pipe 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi 'y' send -X copy-pipe 'pbcopy'
 
 unbind r
 bind r source-file ~/.tmux.conf
 
 unbind ^A
 bind ^A select-pane -t :.*
+
+set -g default-terminal "xterm-256color-italic"
+set -ga terminal-overrides ",*256col*:Tc"
+
+set allow-rename off
+
+set -g status-position bottom
+set -g status-bg colour234
+set -g status-fg colour137
+set -g status-left ''
+set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
+set -g status-right-length 50
+set -g status-left-length 20
+
+setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
+setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+
+bind-key -n M-[ previous-window
+bind-key -n M-] next-window
