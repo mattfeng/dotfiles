@@ -1,5 +1,6 @@
 " pandoc settings
 let g:pandoc#modules#disabled = ["folding"]
+let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#style#emphases = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex"]
 
@@ -40,6 +41,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark                       " dark background
 autocmd vimenter * colorscheme gruvbox    " set colorscheme
 
@@ -90,10 +92,6 @@ let g:vim_markdown_frontmatter = 1
 " use global registers for copy and pasting
 " need to install gvim for these to work
 set clipboard=unnamedplus
-" vnoremap y "+y
-" vnoremap x "+x
-" nnoremap x "+x
-" nnoremap p "+p
 
 " set up italics
 let &t_ZH="\e[3m"
@@ -116,3 +114,14 @@ autocmd FileType tex nnoremap <Space><Space> /(<>)<CR>
 autocmd FileType tex nnoremap <Space>i 4xa
 autocmd FileType tex inoremap ;bf \textbf{} <Esc>T{i
 autocmd FileType tex inoremap ;def \begin{definition}<CR><CR>\end{definition}<Esc>
+
+" compatibility with mac
+set backspace=indent,eol,start
+
+" visual wordwrap at 80 characters
+set textwidth=80
+set formatoptions+=t
+
+" disable spellcheck
+set nospell
+
