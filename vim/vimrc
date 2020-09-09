@@ -20,7 +20,6 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " latex plugins
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " markdown plugins
@@ -75,16 +74,18 @@ set noswapfile
 " enable mouse scrolling
 set mouse=a
 
-" vim-latex-live-preview settings
-let g:livepreview_previewer = 'llpp.inotify'
-let g:livepreview_cursorhold_recompile = 0
-
 " vimtex settings
+" use \ll to start live compile and preview
 let g:tex_flavor = 'latex'
+let g:vimtex_view_general_viewer = 'llpp.inotify'
 
 " vim-instant-markdown settings
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autostart = 0
+
+" more vim markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
 
 " use global registers for copy and pasting
 " need to install gvim for these to work
@@ -110,3 +111,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:airline_powerline_fonts = 0
 let g:airline_theme='fruit_punch'
 
+" latex shortcuts
+autocmd FileType tex nnoremap <Space><Space> /(<>)<CR>
+autocmd FileType tex nnoremap <Space>i 4xa
+autocmd FileType tex inoremap ;bf \textbf{} <Esc>T{i
+autocmd FileType tex inoremap ;def \begin{definition}<CR><CR>\end{definition}<Esc>
