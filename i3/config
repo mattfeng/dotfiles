@@ -78,12 +78,17 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -b 'Y' 'i3-msg exit'"
 
 bindsym $mod+n exec --no-startup-id ~/.config/i3/empty_workspace.sh
 
+# Volume controls
 bindsym $mod+Shift+o exec --no-startup-id pactl set-sink-volume 1 -5%
 bindsym $mod+Shift+p exec --no-startup-id pactl set-sink-volume 1 +5%
+# Spotify controls
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 workspace 1 output "DP-4"
 workspace 2 output "DP-4"

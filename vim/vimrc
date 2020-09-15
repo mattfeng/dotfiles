@@ -2,7 +2,7 @@
 let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#style#emphases = 0
-let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex"]
+let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex", "yaml"]
 
 " enable italics gruvbox
 let g:gruvbox_italic = 1
@@ -38,6 +38,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" for better writing
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -110,18 +113,44 @@ let g:airline_powerline_fonts = 0
 let g:airline_theme='fruit_punch'
 
 " latex shortcuts
-autocmd FileType tex nnoremap <Space><Space> /(<>)<CR>
-autocmd FileType tex nnoremap <Space>i 4xa
 autocmd FileType tex inoremap ;bf \textbf{} <Esc>T{i
 autocmd FileType tex inoremap ;def \begin{definition}<CR><CR>\end{definition}<Esc>
+
+" markdown shortcuts
+autocmd FileType markdown inoremap ;api  `API Server`
+autocmd FileType markdown inoremap ;pod  `Pod`
+autocmd FileType markdown inoremap ;pods `Pods`
+autocmd FileType markdown inoremap ;cp   `Control Plane`
+autocmd FileType markdown inoremap ;kl   `Kubelet`
+autocmd FileType markdown inoremap ;ksp  `Kubernetes Service Proxy`
+autocmd FileType markdown inoremap ;kp   `kube-proxy`
+autocmd FileType markdown inoremap ;cr   `Container Runtime`
+autocmd FileType markdown inoremap ;cni  `Container Network Interface`
+autocmd FileType markdown inoremap ;svc  `Service`
+autocmd FileType markdown inoremap ;svcs `Services`
+autocmd FileType markdown inoremap ;sa   `ServiceAccount`
+autocmd FileType markdown inoremap ;sas  `ServiceAccounts`
+autocmd FileType markdown inoremap ;ns   `Namespace`
+autocmd FileType markdown inoremap ;rb   `RoleBinding`
+autocmd FileType markdown inoremap ;rbs  `RoleBindings`
+autocmd FileType markdown inoremap ;crb  `ClusterRoleBinding`
+autocmd FileType markdown inoremap ;crbs `ClusterRoleBindings`
+autocmd FileType markdown inoremap ;ro   `Role`
+autocmd FileType markdown inoremap ;ros  `Roles`
+autocmd FileType markdown inoremap ;cro  `ClusterRole`
+autocmd FileType markdown inoremap ;cros `ClusterRoles`
 
 " compatibility with mac
 set backspace=indent,eol,start
 
 " visual wordwrap at 80 characters
-set textwidth=80
-set formatoptions+=t
+set textwidth=78
+set wrapmargin=0
+set formatoptions-=t
 
 " disable spellcheck
 set nospell
+
+" load vim-pandoc for mdx (markdown extended) files
+au! BufNewFile,BufFilePre,BufRead *.mdx set filetype=markdown.pandoc
 
