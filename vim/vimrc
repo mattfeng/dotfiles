@@ -2,7 +2,7 @@
 let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#style#emphases = 0
-let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex", "yaml"]
+let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex", "yaml", "dot"]
 
 " enable italics gruvbox
 let g:gruvbox_italic = 1
