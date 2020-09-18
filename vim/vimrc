@@ -17,7 +17,10 @@ call plug#begin('~/.vim/plugged')
 
 " colorscheme
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/edge'
 
+" nerdtree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " latex plugins
@@ -42,11 +45,35 @@ Plug 'vim-airline/vim-airline-themes'
 " for better writing
 Plug 'junegunn/goyo.vim'
 
+" commenting out stuff
+Plug 'tpope/vim-commentary'
+
+" alignment
+Plug 'junegunn/vim-easy-align'
+
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'hard'
+if has('termguicolors')
+    set termguicolors
+endif
 set background=dark                       " dark background
-autocmd vimenter * colorscheme gruvbox    " set colorscheme
+
+" gruvbox colorscheme
+let g:gruvbox_contrast_dark = 'medium'
+colorscheme gruvbox                       " set colorscheme
+
+" sonokai
+" let g:sonokai_style = 'atlantis'
+" let g:sonokai_enable_italic = 1
+" colorscheme sonokai                       " set colorscheme
+
+" edge
+" let g:edge_style = 'neon'
+" let g:edge_enable_italic = 1
+" colorscheme edge
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
 
 " set up indentation (indent=4 spaces)
 " source: https://archive.is/U0WkA
@@ -94,7 +121,7 @@ let g:vim_markdown_frontmatter = 1
 
 " use global registers for copy and pasting
 " need to install gvim for these to work
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " set up italics
 let &t_ZH="\e[3m"
