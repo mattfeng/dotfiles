@@ -2,7 +2,7 @@
 let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#style#emphases = 0
-let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex", "yaml"]
+let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "sh", "tex", "yaml", "dot"]
 
 " enable italics gruvbox
 let g:gruvbox_italic = 1
@@ -98,6 +98,7 @@ autocmd FileType yaml     setlocal shiftwidth=2 tabstop=2
 autocmd FileType text     setlocal shiftwidth=2 tabstop=2
 autocmd FileType tex      setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
+autocmd FileType hcl      setlocal shiftwidth=2 tabstop=2
 
 " set line numbers, make them relative as well
 set number
@@ -187,3 +188,5 @@ set nospell
 " load vim-pandoc for mdx (markdown extended) files
 au! BufNewFile,BufFilePre,BufRead *.mdx set filetype=markdown.pandoc
 
+" more ergonomic escape sequence
+inoremap jj <ESC>
