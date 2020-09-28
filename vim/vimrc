@@ -92,6 +92,7 @@ autocmd FileType yaml     setlocal shiftwidth=2 tabstop=2
 autocmd FileType text     setlocal shiftwidth=2 tabstop=2
 autocmd FileType tex      setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
+autocmd FileType hcl      setlocal shiftwidth=2 tabstop=2
 
 " set line numbers, make them relative as well
 set number
@@ -181,3 +182,5 @@ set nospell
 " load vim-pandoc for mdx (markdown extended) files
 au! BufNewFile,BufFilePre,BufRead *.mdx set filetype=markdown.pandoc
 
+" more ergonomic escape sequence
+inoremap jj <ESC>
