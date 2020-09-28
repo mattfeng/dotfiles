@@ -19,6 +19,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/sonokai'
 Plug 'sainnhe/edge'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " nerdtree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -56,11 +58,11 @@ call plug#end()
 if has('termguicolors')
     set termguicolors
 endif
-set background=dark                       " dark background
+" set background=dark                       " dark background
 
-" gruvbox colorscheme
-let g:gruvbox_contrast_dark = 'medium'
-colorscheme gruvbox                       " set colorscheme
+" " gruvbox colorscheme
+" let g:gruvbox_contrast_dark = 'medium'
+" colorscheme gruvbox                       " set colorscheme
 
 " sonokai
 " let g:sonokai_style = 'atlantis'
@@ -68,9 +70,13 @@ colorscheme gruvbox                       " set colorscheme
 " colorscheme sonokai                       " set colorscheme
 
 " edge
-" let g:edge_style = 'neon'
+" set background=light
+" let g:edge_style = 'light'
 " let g:edge_enable_italic = 1
 " colorscheme edge
+
+set background=dark
+colorscheme palenight
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
